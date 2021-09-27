@@ -32,7 +32,7 @@ const MainScreen = ({ navigation }) => {
       </View>
       <View style={{flexDirection: "row"}}>
         <Image
-          style={{flex: 2}}
+          style={{flex: 2, resizeMode:'contain'}}
           source={{uri:"https://media.makeameme.org/created/weclome.jpg"}}/>
         <View style={styles.formBox}>
           <Text style={{fontSize:32}}> Register Below </Text>
@@ -45,7 +45,6 @@ const MainScreen = ({ navigation }) => {
           <Button title="Submit" color="red"/>
         </View>
       </View>
-      
     </View>
   )
 }

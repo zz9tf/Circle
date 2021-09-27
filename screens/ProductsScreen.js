@@ -28,7 +28,7 @@ export default function ProductsScreen() {
         <View style={styles.productBox}>
           <View style={styles.productBox}>
             <Image
-              style={{width: '50%'}}
+              style={{width: '50%', resizeMode:'contain'}}
               source={{uri:'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg'}}
             />
             <Text> aaa </Text>
@@ -36,7 +36,7 @@ export default function ProductsScreen() {
 
           <View style={styles.productBox}>
             <Image
-              style={{width: '50%'}}
+              style={{width: '50%', resizeMode:'contain'}}
               source={{uri:'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg'}}
             />
             <Text> aaa </Text>
