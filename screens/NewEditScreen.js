@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
 
-const NewEditScreen = ({ initName, initDescribe, initImage, navigation }) => {
+import StoreDatabase from '../activities/storeDatabase.js'
+import GetDatabase from '../activities/getDatabase.js'
 
-  const [name, setName] = React.useState(initName);
-  const [describe, setDescribe] = React.useState(initDescribe);
-  const [image, setImage] = React.useState(initImage);
+const NewEditScreen = ({ navigation, route }) => {
+  const [name, setName] = React.useState(route.params.initName);
+  const [price, setPrice] = React.useState(route.params.initPrice);
+  const [image, setImage] = React.useState(route.params.initImage);
+  const [describe, setDescribe] = React.useState(route.params.initDescribe);
+
+
 
   return (
     <View style={styles.container}>
@@ -20,14 +25,24 @@ const NewEditScreen = ({ initName, initDescribe, initImage, navigation }) => {
       <View style={{flex:10}}>
         <View style={styles.horizontal}>
           <View style={styles.vertical}>
-            <Text> Product Name: </Text>
+            <Text> Product </Text>
             <View style={{alignItems: "center"}}>
-              <TextInput
-                style={{backgroundColor: 'white', color: 'black', height: 30,
-                 width: 400, margin: 12, borderWidth: 1, padding: 10,}}
-                placeholder="Product name"
-                onChangeText={text => {setName(text)}}
-              />
+              <View style={{flexDirection:"row"}}>
+                <TextInput
+                  style={{backgroundColor: 'white', color: 'black', height: 30,
+                    margin: 12, borderWidth: 1, padding: 10}}
+                  placeholder="Name..."
+                  onChangeText={text => {setName(text)}}
+                  value={name}
+                />
+                <TextInput
+                  style={{backgroundColor: 'white', color: 'black', height: 30,
+                    margin: 12, borderWidth: 1, padding: 10}}
+                  placeholder="price..."
+                  onChangeText={text => {setPrice(text)}}
+                  value={price}
+                />
+              </View>
               <Image
                 style={{
                   borderColor: "black",
@@ -42,6 +57,7 @@ const NewEditScreen = ({ initName, initDescribe, initImage, navigation }) => {
                  width: 400, margin: 12, borderWidth: 1, padding: 10,}}
                 placeholder="Input my image..."
                 onChangeText={text => {setImage(text)}}
+                value={image}
               />
             </View>
           </View>
@@ -54,18 +70,41 @@ const NewEditScreen = ({ initName, initDescribe, initImage, navigation }) => {
               style={styles.input}
               placeholder="Text here..."
               onChangeText={text => {setDescribe(text)}}
+              value={describe}
               />
-              <Button
-                color='red'
-                title='Post'
-                onPress = {() => {
-                  navigation.navigate('NewPreviewScreen', {
-                    name: name,
-                    describe: describe,
-                    image: image,
-                  })
-                }}
-              />
+              <View style={{flexDirection: 'row', width: 400, justifyContent: 'space-around'}}>
+                <Button
+                  color='red'
+                  title='Preview'
+                  onPress = {() => {
+                    navigation.navigate('NewPreviewScreen', {
+                      name: name,
+                      describe: describe,
+                      image: image,
+                      price: price
+                    })
+                  }}
+                />
+
+                <Button
+                  color='red'
+                  title='Cancle'
+                  onPress = {() => {
+                    navigation.navigate('MainScreen')
+                  }}
+                />
+
+                <Button
+                  color='red'
+                  title='Clear'
+                  onPress = {() => {
+                    setName('')
+                    setPrice('')
+                    setImage('')
+                    setDescribe('')
+                  }}
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -100,7 +139,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'stretch',
     margin: 20,
-    backgroundColor:'lightgreen',
   },
   horizontal: {
     flex:1,

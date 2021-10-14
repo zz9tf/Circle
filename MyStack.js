@@ -8,6 +8,7 @@ import AboutScreen from "./screens/AboutScreen.js";
 import ProductsScreen from "./screens/ProductsScreen.js";
 import NewEditScreen from "./screens/NewEditScreen.js";
 import NewPreviewScreen from "./screens/NewPreviewScreen.js";
+import DatabaseViewer from "./screens/DatabaseViewer.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,12 +38,24 @@ const MyStack = () => {
           name="NewEditScreen"
           component={NewEditScreen}
           options={{title: "NewEditScreen"}}
+          initialParams={{
+            initName: "",
+            initPrice: "",
+            initImage: "",
+            initDescribe: ""
+          }}
         />
 
         <Stack.Screen
           name="NewPreviewScreen"
           component={NewPreviewScreen}
           options={{title: "NewPreviewScreen"}}
+        />
+
+        <Stack.Screen
+          name="DatabaseViewer"
+          component={DatabaseViewer}
+          options={{title: "databaseViewer"}}
         />
 
       </Stack.Navigator>

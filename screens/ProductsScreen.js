@@ -1,9 +1,18 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
+import GetDatabase from "../activities/getDatabase.js"
 
 // const App = () => {...}
-export default function ProductsScreen() {
+const ProductsScreen = () => {
+
+  const [databaseName, setDatabaseName] = useState('@products')
+
+  useEffect(() => {GetDatabase(databaseName, getData)}
+            ,[])
+
+  const getData = () => {
+
+  }
   return (
     <View style={styles.container}>
     <View style={{flex: 1, alignItems:'center'}}>
@@ -110,3 +119,6 @@ const styles = StyleSheet.create({
     margin: 5
   }
 });
+
+
+export default ProductsScreen;

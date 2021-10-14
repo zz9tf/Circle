@@ -14,21 +14,20 @@ const MainScreen = ({ navigation }) => {
         padding: "10px",
         justifyContent: "space-around",
       }}>
-      <Button
-        title="About"
-        onPress={() => navigation.navigate("About")
-        }
-      />
-      <Button
-        title="Products"
-        onPress={() => navigation.navigate("Products")
-        }
-      />
-      <Button
-        title="+New"
-        onPress={() => navigation.navigate("NewEditScreen")
+        <Button
+          title="About"
+          onPress={() => navigation.navigate("About")
           }
-      />
+        />
+        <Button
+          title="Products"
+          onPress={() => navigation.navigate("Products")
+          }
+        />
+        <Button
+          title="+New"
+          onPress={() => navigation.navigate("NewEditScreen")}
+        />
       </View>
       <View style={{flexDirection: "row"}}>
         <Image
@@ -45,6 +44,13 @@ const MainScreen = ({ navigation }) => {
           <Button title="Submit" color="red"/>
         </View>
       </View>
+      <View style={{alignItems:"center"}}>
+        <Button
+          title="View my database"
+          onPress={() => navigation.navigate("DatabaseViewer")}
+        />
+      </View>
+
     </View>
   )
 }
