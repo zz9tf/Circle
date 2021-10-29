@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MyStack from "./MyStack.js";
 
+import MyTab from "./navigator/TabNavigator.js";
 export default function App() {
   return (
-    <MyStack />
+    <MyTab />
   );
 }

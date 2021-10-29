@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-const MainScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={{
       flexDirection: "column",
@@ -15,18 +16,20 @@ const MainScreen = ({ navigation }) => {
         justifyContent: "space-around",
       }}>
         <Button
-          title="About"
-          onPress={() => navigation.navigate("About")
-          }
+          title="+New"
+          onPress={() => navigation.navigate("NewEditScreen")}
         />
+        
+        
         <Button
           title="Products"
           onPress={() => navigation.navigate("Products")
           }
         />
         <Button
-          title="+New"
-          onPress={() => navigation.navigate("NewEditScreen")}
+          title="About"
+          onPress={() => navigation.navigate("About")
+          }
         />
       </View>
       <View style={{flexDirection: "row"}}>
@@ -71,4 +74,4 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-export default MainScreen;
+export default LoginScreen;

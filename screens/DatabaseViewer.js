@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, Image, TextInput
 import GetDatabase from '../activities/getDatabase.js'
 import StoreDatabase from '../activities/storeDatabase.js'
 import ClearDatabase from '../activities/clearDatabase.js'
-import Database from '../objects/database.js'
+import Database from '../databases/database.js'
 
 export default function DatabaseViewer() {
   const databaseName = '@products';
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     flexDirection: 'column'
   },
   headerText: {
@@ -97,14 +96,12 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'green',
   },
   horizontal: {
     flex:3,
     flexDirection:'row',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'oldlace',
   },
   upperLeft:{
@@ -142,7 +139,6 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'#fffff5',
   },
 });

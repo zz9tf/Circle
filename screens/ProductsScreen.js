@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
   },
   headerText: {
     flex:1,
@@ -96,14 +95,12 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'green',
   },
   horizontal: {
     flex:1,
     flexDirection:'row',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'pink',
   },
   input: {

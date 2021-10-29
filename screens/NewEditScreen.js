@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
   },
   header: {
     flex:2,
@@ -137,14 +136,12 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     flex:1,
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     margin: 20,
   },
   horizontal: {
     flex:1,
     flexDirection:'row',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'lightgreen',
   },
   input:{
@@ -160,7 +157,6 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'#fffff5',
   },
 });

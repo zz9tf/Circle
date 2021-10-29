@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
 import { useState, useEffect } from 'react';
 import GetDatabase from '../activities/getDatabase.js'
 import StoreDatabase from '../activities/storeDatabase.js'
-import Database from '../objects/database.js'
+import Database from '../databases/database.js'
 
 const NewPreviewScreen = ({ route, navigation }) => {
   const {name, describe, image, price} = route.params;
@@ -142,7 +142,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
   },
   header: {
     flex:2,
@@ -160,14 +159,12 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     margin: 20,
   },
   horizontal: {
     flex:1,
     flexDirection:'row',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'lightgreen',
   },
   input:{
@@ -182,7 +179,6 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'#fffff5',
   },
 });

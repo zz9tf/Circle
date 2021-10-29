@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     flexDirection: "column"
   },
   headerText: {
@@ -60,14 +59,12 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'green',
   },
   horizontal: {
     flex:3,
     flexDirection:'row',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'oldlace',
   },
   upperLeft:{
@@ -105,7 +102,6 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'column',
     alignItems: 'stretch',
-    justifyContent: 'stretch',
     backgroundColor:'#fffff5',
   },
 });
