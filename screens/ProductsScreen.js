@@ -5,7 +5,7 @@ import GetDatabase from "../activities/getDatabase.js"
 // const App = () => {...}
 const ProductsScreen = () => {
 
-  const [databaseName, setDatabaseName] = useState('@products')
+  const databaseName = '@products'
 
   useEffect(() => {GetDatabase(databaseName, getData)}
             ,[])
@@ -22,18 +22,28 @@ const ProductsScreen = () => {
     </View>
     <Text style={{borderBottomColor: "black", borderBottomWidth: StyleSheet.hairlineWidth}}> </Text>
       <View style={{flex:10, flexDirection: 'column'}}>
-         // 1
+         <Text>
+          // 1
+         </Text>
+         
           <View style={styles.productBox}>
             <View style={styles.productBox}>
-            //1a content
-
+            
+            <Text>
+              //1a content
+            </Text>
             </View>
             <View style={styles.productBox}>
-            //1b content
+            <Text>
+              //1b content
+            </Text>
+            
             </View>
           </View>
         <Text style={{borderBottomColor: "black", borderBottomWidth: StyleSheet.hairlineWidth}}> </Text>
-        // 2
+          <Text>
+          // 2
+          </Text>
         <View style={styles.productBox}>
           <View style={styles.productBox}>
             <Image
@@ -52,24 +62,37 @@ const ProductsScreen = () => {
           </View>
         </View>
         <Text style={{borderBottomColor: "black", borderBottomWidth: StyleSheet.hairlineWidth}}> </Text>
-        // 3
+          <Text>
+          // 3
+         </Text>
         <View style={styles.productBox}>
           <View style={styles.productBox}>
-            // 3a
+            <Text>
+              // 3a
+            </Text>
           </View>
           <View style={styles.productBox}>
-            // 3b
+            <Text>
+              // 3b
+            </Text>
           </View>
         </View>
 
         <Text style={{borderBottomColor: "black", borderBottomWidth: StyleSheet.hairlineWidth}}> </Text>
-        // 4
+          <Text>
+            // 4
+          </Text>
         <View style={styles.productBox}>
           <View style={styles.productBox}>
+          <Text>
             // 4a
+          </Text>
+            
           </View>
           <View style={styles.productBox}>
+          <Text>
             // 4b
+          </Text>
           </View>
         </View>
 

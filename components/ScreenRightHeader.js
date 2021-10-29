@@ -4,7 +4,7 @@ import {Button, Image, Text, View } from 'react-native';
 export function HeaderLeft() {
     return (
         <Image
-            style={{ width: 100, height: 50, margin: 20 }}
+            style={{ width: 60, height: 30 }}
             source={require("../images/Circle.png")} />
     );
 };

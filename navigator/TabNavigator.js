@@ -31,7 +31,9 @@ const MyTab = () => {
                     component={MyTabMyCircle}
                 />
             </Tab.Navigator>
+            
         </NavigationContainer>
+        
     )
 }
 

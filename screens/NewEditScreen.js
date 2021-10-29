@@ -23,7 +23,7 @@ const NewEditScreen = ({ navigation, route }) => {
           </Text>
       </View>
       <View style={{flex:10}}>
-        <View style={styles.horizontal}>
+        <View style={styles.vertical}>
           <View style={styles.vertical}>
             <Text> Product </Text>
             <View style={{alignItems: "center"}}>

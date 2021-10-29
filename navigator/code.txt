@@ -1,0 +1,12 @@
+<Tab.Screen
+                    name="New"
+                    component={MyTabNew}
+                />
+                <Tab.Screen
+                    name="DatabaseViewer"
+                    component={MyTabDatabaseViewer}
+                />
+                <Tab.Screen
+                    name="MyCircle"
+                    component={MyTabMyCircle}
+                />
