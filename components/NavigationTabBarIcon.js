@@ -1,24 +1,38 @@
+import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function TabBarIcon(route) {
     return({
-        tabBarIcon: ({ focused, color, size }) => {
+        headerShown: false,
+        tabBarIcon: ({ color, size }) => {
             if (route.name === 'Home') {
               return (
                 <Ionicons
-                  name={
-                    focused
-                      ? 'ios-information-circle'
-                      : 'ios-information-circle-outline'
-                  }
+                  name={'home'}
                   size={size}
                   color={color}
                 />
               );
-            } else if (route.name === 'Settings') {
+            } else if (route.name === 'New') {
               return (
                 <Ionicons
-                  name={focused ? 'ios-list-box' : 'ios-list'}
+                  name={'list'}
+                  size={size}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'DatabaseViewer') {
+              return (
+                <Ionicons
+                  name={'albums'}
+                  size={size}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'MyCircle') {
+              return (
+                <Ionicons
+                  name={'person'}
                   size={size}
                   color={color}
                 />

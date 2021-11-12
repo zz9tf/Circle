@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
-import GetDatabase from "../activities/getDatabase.js"
-
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 // const App = () => {...}
-const ProductsScreen = () => {
 
-  const databaseName = '@products'
 
-  useEffect(() => {GetDatabase(databaseName, getData)}
-            ,[])
 
-  const getData = () => {
+const ProductsScreen = ({navigation}) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: ()=> (
+        <View style={{flexDirection:"row", width:120}}>
+          <TouchableOpacity onPress={() => navigation.navigate("ProductSignIn")}>
+            <Text style={{margin:10}}>
+              Sign in
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ProductLogin")}>
+            <Text style={{margin:10}}>
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
+      ),
+      headerLeft: () => (
+        <TouchableOpacity onPress={()=>{navigation.navigate("Home")}}>
+            <Image
+                style={{ width: 60, height: 30, margin:10 }}
+                source={require("../images/Circle.png")} 
+            />
+        </TouchableOpacity>
+      )
+    });
+  })
 
-  }
   return (
     <View style={styles.container}>
     <View style={{flex: 1, alignItems:'center'}}>
