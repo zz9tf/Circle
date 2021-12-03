@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {useValue} from '../navigator/userInfProvider';
 import { Text, View, Image, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 
 export default function AboutScreen({navigation}) {
@@ -7,17 +8,28 @@ export default function AboutScreen({navigation}) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: ()=> (
-        <View style={{flexDirection:"row", width:120}}>
-          <TouchableOpacity onPress={() => navigation.navigate("CircleSignIn")}>
-            <Text style={{margin:10}}>
-              Sign in
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("CircleLogin")}>
-            <Text style={{margin:10}}>
-              Login
-            </Text>
-          </TouchableOpacity>
+        <View>
+          {useValue().user.login?
+            <View style={{flexDirection:"row", width:120}}>
+              <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+                <Text style={{margin:10}}>
+                  Hello, {useValue.userName}
+                </Text>
+              </TouchableOpacity>
+            </View>:
+            <View style={{flexDirection:"row", width:120}}>
+            <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+              <Text style={{margin:10}}>
+                Sign in
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={{margin:10}}>
+                Login
+              </Text>
+            </TouchableOpacity>
+          </View>
+          }
         </View>
       )
     });

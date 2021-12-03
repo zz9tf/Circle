@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SignInScreen from "../screens/SignInScreen.js";
@@ -9,6 +9,27 @@ import AboutScreen from "../screens/AboutScreen.js";
 import PostScreen from "../screens/PostScreen.js";
 
 const Stack = createNativeStackNavigator();
+
+const commonScreen = (Stack) => {
+    return [
+        <Stack.Screen
+            name="SignIn"
+            component={SignInScreen}
+            options={{
+                title: "Sign in",
+                headerTitleAlign: 'center'
+            }}
+        />,
+        <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+                title: "Login",
+                headerTitleAlign: 'center'
+            }}
+        />
+    ]
+}
 
 const MyTabProduct = () => {
     return (
@@ -21,22 +42,7 @@ const MyTabProduct = () => {
                     headerTitleAlign: 'center'
                 }}
             />
-            <Stack.Screen
-                name="ProductSignIn"
-                component={SignInScreen}
-                options={{
-                    title: "Sign in",
-                    headerTitleAlign: 'center'
-            }}
-            />
-            <Stack.Screen
-                name="ProductLogin"
-                component={LoginScreen}
-                options={{
-                    title: "Login",
-                    headerTitleAlign: 'center'
-            }}
-          />
+            {commonScreen(Stack)}
         </Stack.Navigator>
     );
   };
@@ -52,29 +58,11 @@ const MyTabProduct = () => {
                     title: "",
                     headerTitleAlign: 'center'
                 }}
-                initialParams={{
-                    initName: "",
-                    initPrice: "",
-                    initImage: "",
-                    initDescribe: ""
-                }}
+               /*  initialParams={{
+                    name: ""
+                }} */
             />
-            <Stack.Screen
-                name="PostSignIn"
-                component={SignInScreen}
-                options={{
-                    title: "Sign in",
-                    headerTitleAlign: 'center'
-                }}
-            />
-            <Stack.Screen
-                name="PostLogin"
-                component={LoginScreen}
-                options={{
-                    title: "Login",
-                    headerTitleAlign: 'center'
-                }}
-          />
+            {commonScreen(Stack)}
         </Stack.Navigator>
     );
   };
@@ -98,22 +86,7 @@ const MyTabProduct = () => {
                         headerTitleAlign: 'center'
                     }}
                 />
-                <Stack.Screen
-                    name="CircleSignIn"
-                    component={SignInScreen}
-                    options={{
-                        title: "Sign in",
-                        headerTitleAlign: 'center'
-                    }}
-                />
-                <Stack.Screen
-                    name="CircleLogin"
-                    component={LoginScreen}
-                    options={{
-                        title: "Login",
-                        headerTitleAlign: 'center'
-                    }}
-                />
+                {commonScreen(Stack)}
             </Stack.Navigator>
     );
   };

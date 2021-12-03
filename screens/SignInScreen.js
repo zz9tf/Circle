@@ -1,40 +1,58 @@
-import React from 'react'
+import React, { useState }  from "react";
+import {useValue} from '../navigator/userInfProvider';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, Dimensions } from 'react-native';
-import { useState } from 'react/cjs/react.development';
 import Axios from "axios";
 
-const SignInScreen = () => {
-
-  const [userName, setUserName] = useState();
-  const [gender, setGender] = useState();
-  const [email, setEmail] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [institution, setInstitution] = useState();
-  const [currentUser,setCurrentUser] = useState();
+const SignInScreen = ({navigation}) => {
+  const {user, setUser} = useValue()
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [message, setMessage] = useState("");
 
   const registration = async(
     userName,
+    password,
     gender,
     email,
     phoneNumber,
     institution
     ) => {
-    try{
-      let appURL = "http://127.0.0.1:3000"
-      let result = await Axios.post(appURL+'/register',{
-        userName: userName,
-        gender:gender,
-        email:email,
-        phoneNumber:phoneNumber,
-        institution:institution,
-      })
-
-
-    }catch(e){
-      console.log('error'+e)
-      console.dir(e)
-      throw(e)
-    }
+      try{
+        //let appURL = "http://localhost:5000"
+        let result = {data:[]}
+        result = await Axios.post(user.appURL+'/register',{
+          userName: userName,
+          password: password,
+          gender:gender,
+          email:email,
+          phoneNumber:phoneNumber,
+          institution:institution})
+        if (result.data.login == true){
+          alert(result.data.message)
+          setUser({
+            ...user,
+            userName: result.data.userName,
+            password: result.data.password,
+            gender: result.data.gender,
+            email: result.data.email,
+            phoneNumber: result.data.phoneNumber,
+            institution: result.data.institution,
+            validated: result.data.validated,
+            login: result.data.login})
+            navigation.goBack()
+        } else{
+          setMessage(result.data.message)
+        }
+        
+      }catch(e){
+        console.log('error'+e)
+        console.dir(e)
+        throw(e)
+      }
   }
   return (
     <View style={{flex:1, flexDirection: "column", alignItems:"center", backgroundColor:"lightblue"}}>
@@ -57,6 +75,11 @@ const SignInScreen = () => {
           style={styles.input}
           placeholder="User Name"
           onChangeText={(text)=>setUserName(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          onChangeText={(text)=>setPassword(text)}
         />
         <TextInput
           style={styles.input}
@@ -83,6 +106,7 @@ const SignInScreen = () => {
           <TouchableOpacity
             onPress={() => registration(
               userName,
+              password,
               gender,
               email,
               phoneNumber,
@@ -91,9 +115,7 @@ const SignInScreen = () => {
           >
             <Text style={{color:"white", fontSize:20}}>Sign in</Text>
           </TouchableOpacity>
-        </View>
-        <View style={{margin:10, width: Dimensions.get("window").width*0.7}}>
-          <Text style={{color:"white", fontSize:20}}>{currentUser}</Text>
+          <Text>{message}</Text>
         </View>
       </View>
       

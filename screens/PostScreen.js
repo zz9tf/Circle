@@ -1,28 +1,40 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Text, View, Button, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+import {useValue} from '../navigator/userInfProvider';
+import { StyleSheet, Text, View, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 
 const PostScreen = ({ navigation, route }) => {
-  const [name, setName] = React.useState(route.params.initName);
-  const [price, setPrice] = React.useState(route.params.initPrice);
-  const [image, setImage] = React.useState(route.params.initImage);
-  const [describe, setDescribe] = React.useState(route.params.initDescribe);
+  const [name, setName] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [image, setImage] = React.useState("");
+  const [describe, setDescribe] = React.useState(""); //route.params.initDescribe)
   
   
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: ()=> (
-        <View style={{flexDirection:"row", width:120}}>
-          <TouchableOpacity onPress={() => navigation.navigate("PostSignIn")}>
-            <Text style={{margin:10}}>
-              Sign in
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("PostLogin")}>
-            <Text style={{margin:10}}>
-              Login
-            </Text>
-          </TouchableOpacity>
+        <View>
+          {useValue().user.login?
+            <View style={{flexDirection:"row", width:120}}>
+              <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+                <Text style={{margin:10}}>
+                  Hello, {useValue.userName}
+                </Text>
+              </TouchableOpacity>
+            </View>:
+            <View style={{flexDirection:"row", width:120}}>
+            <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+              <Text style={{margin:10}}>
+                Sign in
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={{margin:10}}>
+                Login
+              </Text>
+            </TouchableOpacity>
+          </View>
+          }
         </View>
       ),
       headerLeft: () => (
@@ -116,39 +128,44 @@ const PostScreen = ({ navigation, route }) => {
               value={image}
             />
           <View style={{flex: 1, flexDirection: 'row',alignItems:"flex-end"}}>
-            <Button
-              color='red'
-              title='Post'
+            <TouchableOpacity
               onPress = {() => {
-                setProducts(newProducts)
-                  // navigation.navigate({
-                  //   name: 'MainScreen',
-                  //   params: {
-                  //     initName: '',
-                  //     initDescribe: '',
-                  //     initImage: '',
-                  //     initPrice: ''
-                  //   }
-                  // })
-              }}
-            />
-            <Button
-              color='red'
-              title='Cancle'
+                  setProducts(newProducts)
+                    // navigation.navigate({
+                    //   name: 'MainScreen',
+                    //   params: {
+                    //     initName: '',
+                    //     initDescribe: '',
+                    //     initImage: '',
+                    //     initPrice: ''
+                    //   }
+                    // })
+                }}>
+                <Text style={styles.button}>
+                  Post
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
               onPress = {() => {
-                navigation.navigate('MainScreen')
-              }}
-            />
-            <Button
-              color='red'
-              title='Clear'
+                navigation.navigate('Home')
+              }}>
+                <Text style={styles.button}>
+                Cancle
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
               onPress = {() => {
                 setName('')
                 setPrice('')
                 setImage('')
                 setDescribe('')
-              }}
-            />
+              }}>
+                <Text style={styles.button}>
+                  Clear
+                </Text>
+            </TouchableOpacity>
           </View>
         <View style={{flex:1}}>
 
@@ -159,5 +176,16 @@ const PostScreen = ({ navigation, route }) => {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "coral",
+    padding: 10,
+    marginHorizontal: 20,
+    borderRadius: 18,
+    alignItems:"center"
+  },
+});
+
 
 export default PostScreen;

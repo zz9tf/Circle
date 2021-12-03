@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import {useValue} from '../navigator/userInfProvider';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-// const App = () => {...}
-
-
 
 const ProductsScreen = ({navigation}) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: ()=> (
-        <View style={{flexDirection:"row", width:120}}>
-          <TouchableOpacity onPress={() => navigation.navigate("ProductSignIn")}>
-            <Text style={{margin:10}}>
-              Sign in
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("ProductLogin")}>
-            <Text style={{margin:10}}>
-              Login
-            </Text>
-          </TouchableOpacity>
+        <View>
+          {useValue().user.login?
+            <View style={{flexDirection:"row", width:120}}>
+              <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+                <Text style={{margin:10}}>
+                  Hello, {useValue.userName}
+                </Text>
+              </TouchableOpacity>
+            </View>:
+            <View style={{flexDirection:"row", width:120}}>
+            <TouchableOpacity onPress={() => {
+              navigation.navigate("SignIn")
+              }}>
+              <Text style={{margin:10}}>
+                Sign in
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={{margin:10}}>
+                Login
+              </Text>
+            </TouchableOpacity>
+          </View>
+          }
         </View>
       ),
       headerLeft: () => (
