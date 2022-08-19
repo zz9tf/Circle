@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useValue} from '../navigator/userInfProvider';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native';
 
 const ProductsScreen = ({navigation}) => {
   React.useLayoutEffect(() => {
@@ -9,9 +9,9 @@ const ProductsScreen = ({navigation}) => {
         <View>
           {useValue().user.login?
             <View style={{flexDirection:"row", width:120}}>
-              <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+              <TouchableOpacity onPress={() => navigation.navigate("UserInformationScreen")}>
                 <Text style={{margin:10}}>
-                  Hello, {useValue.userName}
+                  Hello, {useValue().user.userName}
                 </Text>
               </TouchableOpacity>
             </View>:
@@ -42,7 +42,6 @@ const ProductsScreen = ({navigation}) => {
       )
     });
   })
-
   return (
     <View style={styles.container}>
     <View style={{flex: 1, alignItems:'center'}}>

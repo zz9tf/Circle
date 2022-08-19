@@ -11,9 +11,9 @@ export default function AboutScreen({navigation}) {
         <View>
           {useValue().user.login?
             <View style={{flexDirection:"row", width:120}}>
-              <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+              <TouchableOpacity onPress={() => navigation.navigate("UserInformationScreen")}>
                 <Text style={{margin:10}}>
-                  Hello, {useValue.userName}
+                  Hello, {useValue().user.userName}
                 </Text>
               </TouchableOpacity>
             </View>:

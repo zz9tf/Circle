@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useValue} from '../navigator/userInfProvider';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, Dimensions } from 'react-native';
 import Axios, * as others from 'axios';
@@ -22,6 +22,7 @@ const SignInScreen = ({navigation}) => {
           password: password
       }})
       if (result.data.login) {
+        alert(result.data.message)
         setUser({
           ...user,
           userName: result.data.userName,
@@ -30,10 +31,10 @@ const SignInScreen = ({navigation}) => {
           email: result.data.email,
           phoneNumber: result.data.phoneNumber,
           institution: result.data.institution,
+          biography: result.data.biography,
           validated: result.data.validated,
           login: result.data.login,
           })
-        alert(result.data.message)
         navigation.goBack();
       } else{
         setMessage(result.data.message)
@@ -42,6 +43,13 @@ const SignInScreen = ({navigation}) => {
       throw(e)
     }
   }
+
+  useEffect(()=>{
+    if (user.login){
+      navigation.goBack();
+    } 
+  },[user]);
+
   return (
     <View style={{flex:1, flexDirection: "column", alignItems:"center", backgroundColor:"lightblue"}}>
       <View style={{marginVertical:50}}>

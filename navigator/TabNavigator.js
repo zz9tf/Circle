@@ -11,12 +11,14 @@ const Tab = createBottomTabNavigator();
 const MyTab = () => {
     const user = {
         appURL: "https://afternoon-taiga-68507.herokuapp.com",
+        //appURL: "http://localhost:5000",
         userName: "",
         password: "",
         gender: "",
         email: "",
         phoneNumber: "",
         institution: "",
+        biography: "",
         validated: false,
         login: false}
     

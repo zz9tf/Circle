@@ -16,9 +16,9 @@ const PostScreen = ({ navigation, route }) => {
         <View>
           {useValue().user.login?
             <View style={{flexDirection:"row", width:120}}>
-              <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+              <TouchableOpacity onPress={() => navigation.navigate("UserInformationScreen")}>
                 <Text style={{margin:10}}>
-                  Hello, {useValue.userName}
+                  Hello, {useValue().user.userName}
                 </Text>
               </TouchableOpacity>
             </View>:
@@ -130,7 +130,7 @@ const PostScreen = ({ navigation, route }) => {
           <View style={{flex: 1, flexDirection: 'row',alignItems:"flex-end"}}>
             <TouchableOpacity
               onPress = {() => {
-                  setProducts(newProducts)
+                  // setProducts(newProducts)
                     // navigation.navigate({
                     //   name: 'MainScreen',
                     //   params: {

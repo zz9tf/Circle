@@ -7,6 +7,7 @@ import ProductsScreen from "../screens/ProductsScreen.js";
 import UserScreen from "../screens/UserScreen.js";
 import AboutScreen from "../screens/AboutScreen.js";
 import PostScreen from "../screens/PostScreen.js";
+import UserInformationScreen from '../screens/UserInformationScreen.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,14 @@ const commonScreen = (Stack) => {
             options={{
                 title: "Login",
                 headerTitleAlign: 'center'
+            }}
+        />,
+        <Stack.Screen
+            name="UserInformationScreen"
+            component={UserInformationScreen}
+            options={{
+                title: "My profile",
+                headerTitleAlign: "center"
             }}
         />
     ]

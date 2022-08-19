@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useEffect, useState }  from "react";
 import {useValue} from '../navigator/userInfProvider';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, Dimensions } from 'react-native';
 import Axios from "axios";
@@ -22,7 +22,6 @@ const SignInScreen = ({navigation}) => {
     institution
     ) => {
       try{
-        //let appURL = "http://localhost:5000"
         let result = {data:[]}
         result = await Axios.post(user.appURL+'/register',{
           userName: userName,
@@ -41,6 +40,7 @@ const SignInScreen = ({navigation}) => {
             email: result.data.email,
             phoneNumber: result.data.phoneNumber,
             institution: result.data.institution,
+            biography: result.data.biography,
             validated: result.data.validated,
             login: result.data.login})
             navigation.goBack()
@@ -54,6 +54,13 @@ const SignInScreen = ({navigation}) => {
         throw(e)
       }
   }
+
+  useEffect(()=>{
+    if (user.login){
+      navigation.goBack();
+    } 
+  },[user]);
+
   return (
     <View style={{flex:1, flexDirection: "column", alignItems:"center", backgroundColor:"lightblue"}}>
       <View style={{marginVertical:50}}>
@@ -61,10 +68,7 @@ const SignInScreen = ({navigation}) => {
           style={{ 
             width: Dimensions.get("window").width*0.2,
             height: Dimensions.get("window").width*0.2,
-            borderTopRightRadius:20,
-            borderTopLeftRadius:20,
-            borderBottomRightRadius:20,
-            borderBottomLeftRadius:20
+            borderRadius:20
            }}
           source={require("../images/myCircleIcon.png")} 
         />
